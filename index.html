@@ -1,173 +1,375 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Webblyfy</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #fff;
-    color: #111;
-    margin: 0; padding: 0;
-  }
-  header, section, footer {
-    max-width: 900px;
-    margin: auto;
-    padding: 2rem 1rem;
-  }
-  header {
-    text-align: center;
-    border-bottom: 2px solid #ddd;
-  }
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-  }
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-  }
-  button {
-    background: #2563eb;
-    border: none;
-    padding: 0.7rem 1.5rem;
-    color: white;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 1rem;
-  }
-  button:hover {
-    background: #1d4ed8;
-  }
-  ul {
-    list-style: inside disc;
-    max-width: 600px;
-    margin: auto;
-  }
-  .cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-  .card {
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-    flex: 1 1 250px;
-    box-shadow: 1px 1px 6px rgba(0,0,0,0.05);
-  }
-  form {
-    max-width: 600px;
-    margin: auto;
-    display: grid;
-    gap: 1rem;
-  }
-  input, textarea {
-    padding: 0.6rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 100%;
-    box-sizing: border-box;
-    font-family: inherit;
-  }
-  textarea {
-    resize: vertical;
-    min-height: 80px;
-  }
-  footer {
-    text-align: center;
-    color: #777;
-    font-size: 0.9rem;
-    margin-top: 3rem;
-    padding-bottom: 2rem;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Webblyfy | Website & Marketing Solutions</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    /* Reset */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #f0f0f5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 2rem 1rem;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+    header {
+      max-width: 900px;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    header h1 {
+      font-size: 3.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+    header p {
+      font-size: 1.4rem;
+      color: #d1d1e9;
+      margin-bottom: 1.8rem;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.15);
+    }
+    .btn-primary {
+      background: #ff5f6d;
+      background: linear-gradient(45deg, #ff5f6d, #ffc371);
+      border: none;
+      padding: 0.85rem 2.5rem;
+      border-radius: 50px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(255,95,109,0.5);
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(255,95,109,0.8);
+      outline: none;
+    }
+
+    main {
+      max-width: 1000px;
+      width: 100%;
+      background: rgba(255 255 255 / 0.1);
+      border-radius: 18px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      padding: 3rem 2rem;
+      backdrop-filter: blur(15px);
+      color: #fff;
+    }
+
+    section {
+      margin-bottom: 3.5rem;
+    }
+    section h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    /* Features grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 1.8rem;
+      text-align: center;
+    }
+    .feature-box {
+      background: rgba(255 255 255 / 0.15);
+      padding: 1.8rem 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: background 0.4s ease;
+      cursor: default;
+    }
+    .feature-box:hover {
+      background: rgba(255 255 255 / 0.25);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+    .feature-box::before {
+      content: '✔️';
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 0.6rem;
+    }
+    .feature-box p {
+      font-size: 1.15rem;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+
+    /* Templates cards */
+    .templates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 1.5rem;
+    }
+    .template-card {
+      background: rgba(255 255 255 / 0.1);
+      border-radius: 15px;
+      padding: 1.5rem 1.2rem;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #ffddd2;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      cursor: pointer;
+      border: 2px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .template-card:hover {
+      background: #ff6e6e;
+      box-shadow: 0 14px 35px rgba(255,110,110,0.7);
+      transform: scale(1.07);
+      border-color: #ffcbc4;
+      color: #fff;
+    }
+
+    /* Centered button under templates */
+    .templates-btn-wrapper {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    /* Marketing section */
+    .marketing-text {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.2rem;
+      font-weight: 500;
+      line-height: 1.7;
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+
+    /* Form styles */
+    form {
+      max-width: 650px;
+      margin: auto;
+      display: grid;
+      gap: 1.4rem;
+      background: rgba(255 255 255 / 0.15);
+      padding: 2rem;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      color: #fff;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      background: rgba(255 255 255 / 0.25);
+      border: none;
+      border-radius: 10px;
+      padding: 0.9rem 1.2rem;
+      font-size: 1.05rem;
+      color: #fff;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      resize: vertical;
+      transition: background 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      background: rgba(255 255 255 / 0.45);
+      outline: none;
+      box-shadow: 0 0 8px 3px rgba(255,95,109,0.6);
+      color: #222;
+    }
+    textarea {
+      min-height: 90px;
+    }
+    form button {
+      justify-self: center;
+      max-width: 240px;
+    }
+
+    /* Live Chat Section */
+    .livechat-section {
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+    .livechat-section p {
+      font-weight: 400;
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-top: auto;
+      padding: 1.5rem;
+      user-select: none;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 650px) {
+      header h1 {
+        font-size: 2.6rem;
+      }
+      section h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header>
   <h1>Webblyfy</h1>
   <p>Launch your business with stunning websites, marketing tools, and expert Google Ads management</p>
-  <button onclick="alert('Get Started clicked!')">Get Started</button>
+  <button class="btn-primary" id="btnGetStarted">Get Started</button>
 </header>
 
-<section>
-  <h2>Why Choose Webblyfy?</h2>
-  <ul>
-    <li>AI-Powered Live Chat Support</li>
-    <li>Professional Website Templates for Any Business</li>
-    <li>Full-Service Google Ads Management</li>
-    <li>Custom Marketing Strategies</li>
-    <li>Easy Onboarding with Business Info Sheet</li>
-  </ul>
-</section>
+<main>
+  <section>
+    <h2>Why Choose Webblyfy?</h2>
+    <div class="features-grid" aria-label="Features">
+      <div class="feature-box" tabindex="0" role="article" aria-label="Website Templates for Any Business">
+        <p>Website Templates for Any Business</p>
+      </div>
+      <div class="feature-box" tabindex="0" role="article" aria-label="AI-Powered Live Chat Support">
+        <p>AI-Powered Live Chat Support</p>
+      </div>
+      <div class="feature-box" tabindex="0" role="article" aria-label="Google Ads Management">
+        <p>Google Ads Management</p>
+      </div>
+      <div class="feature-box" tabindex="0" role="article" aria-label="SEO & Custom Marketing Strategies">
+        <p>SEO & Custom Marketing Strategies</p>
+      </div>
+      <div class="feature-box" tabindex="0" role="article" aria-label="Fast Setup & Expert Support">
+        <p>Fast Setup & Expert Support</p>
+      </div>
+    </div>
+  </section>
 
-<section>
-  <h2>Website Builder Templates</h2>
-  <div class="cards">
-    <div class="card">🧼 Bar Soap & Beard Product Store</div>
-    <div class="card">📋 Service Booking Website</div>
-    <div class="card">🍝 Restaurant & Cafe Template</div>
-    <div class="card">🧾 Consultant & Freelancer Landing Page</div>
-    <div class="card">💄 Beauty & Wellness Brand</div>
-  </div>
-  <div style="text-align:center; margin-top:1rem;">
-    <button onclick="alert('View All Templates clicked!')">View All Templates</button>
-  </div>
-</section>
+  <section>
+    <h2>Website Builder Templates</h2>
+    <p style="text-align:center; max-width:720px; margin:auto; margin-bottom:1.8rem;">
+      Choose from professionally designed templates, then customize them to fit your brand. No coding needed.
+    </p>
+    <div class="templates-grid" aria-label="Website templates">
+      <div class="template-card" tabindex="0" role="button" aria-pressed="false" onclick="alert('Selected Bar Soap & Beard Product Store Template')">
+        🧼 Bar Soap & Beard Product Store
+      </div>
+      <div class="template-card" tabindex="0" role="button" aria-pressed="false" onclick="alert('Selected Service Booking Website Template')">
+        📋 Service Booking Website
+      </div>
+      <div class="template-card" tabindex="0" role="button" aria-pressed="false" onclick="alert('Selected Restaurant & Cafe Template')">
+        🍝 Restaurant & Cafe Template
+      </div>
+      <div class="template-card" tabindex="0" role="button" aria-pressed="false" onclick="alert('Selected Consultant & Freelancer Landing Page Template')">
+        🧾 Consultant & Freelancer Landing Page
+      </div>
+      <div class="template-card" tabindex="0" role="button" aria-pressed="false" onclick="alert('Selected Beauty & Wellness Brand Template')">
+        💄 Beauty & Wellness Brand
+      </div>
+    </div>
+    <div class="templates-btn-wrapper">
+      <button class="btn-primary" id="btnViewAllTemplates">View All Templates</button>
+    </div>
+  </section>
 
-<section>
-  <h2>Marketing & Google Ads Management</h2>
-  <p>We create custom Google Ads campaigns that drive real results. From setup to reporting, we manage everything.</p>
-  <div style="text-align:center; margin-top:1rem;">
-    <button onclick="alert('Book Free Marketing Consultation clicked!')">Book Free Marketing Consultation</button>
-  </div>
-</section>
+  <section>
+    <h2>Marketing & Google Ads Management</h2>
+    <p class="marketing-text">
+      We create custom Google Ads campaigns that drive real results. From setup to reporting, we manage everything.
+    </p>
+    <div style="text-align:center;">
+      <button class="btn-primary" id="btnConsultation">Book Free Marketing Consultation</button>
+    </div>
+  </section>
 
-<section>
-  <h2>Client Business Info Form</h2>
-  <p>Tell us about your business and we’ll tailor your website and marketing for success.</p>
-  <form id="clientForm">
-    <input type="text" name="name" placeholder="Your Name" required />
-    <input type="email" name="email" placeholder="Email Address" required />
-    <input type="text" name="business" placeholder="Business Name" required />
-    <input type="text" name="industry" placeholder="Industry Type" required />
-    <input type="text" name="audience" placeholder="Target Audience" required />
-    <textarea name="services" placeholder="What services/products do you offer?" required></textarea>
-    <textarea name="goals" placeholder="What are your business goals?" required></textarea>
-    <button type="submit">Submit</button>
-  </form>
-</section>
+  <section>
+    <h2>Client Business Info Form</h2>
+    <p style="text-align:center; max-width:700px; margin:auto; margin-bottom:1.2rem;">
+      Tell us about your business and we’ll tailor your website and marketing for success.
+    </p>
+    <form id="clientForm" novalidate>
+      <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
+      <input type="email" name="email" placeholder="Email Address" required aria-required="true" />
+      <input type="text" name="business" placeholder="Business Name" required aria-required="true" />
+      <input type="text" name="industry" placeholder="Industry Type" required aria-required="true" />
+      <input type="text" name="audience" placeholder="Target Audience" required aria-required="true" />
+      <textarea name="services" placeholder="What services/products do you offer?" required aria-required="true"></textarea>
+      <textarea name="goals" placeholder="What are your business goals?" required aria-required="true"></textarea>
+      <button type="submit" class="btn-primary">Submit</button>
+    </form>
+  </section>
 
-<section style="text-align:center; margin-top:3rem;">
-  <h2>Need Help? Chat with Webblyfy AI</h2>
-  <p>Ask anything about your website, marketing, or business plans. Our AI assistant is always here to help.</p>
-  <button onclick="alert('Start Live Chat clicked!')">Start Live Chat</button>
-</section>
+  <section class="livechat-section">
+    <h2>Need Help? Chat with Webblyfy AI</h2>
+    <p>Ask anything about your website, marketing, or business plans. Our AI assistant is always here to help.</p>
+    <button class="btn-primary" id="btnLiveChat">Start Live Chat</button>
+  </section>
+</main>
 
 <footer>
   &copy; <span id="year"></span> Webblyfy. All rights reserved.
 </footer>
 
 <script>
-  // Update footer year dynamically
+  // Set year in footer
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Handle form submission
-  document.getElementById('clientForm').addEventListener('submit', function(e) {
+  // Button event handlers
+  document.getElementById('btnGetStarted').onclick = () => alert('Thanks for getting started! We will reach out shortly.');
+  document.getElementById('btnViewAllTemplates').onclick = () => alert('Redirecting to full template gallery...');
+  document.getElementById('btnConsultation').onclick = () => alert('Booking your free marketing consultation now.');
+  document.getElementById('btnLiveChat').onclick = () => alert('Launching live AI chat...');
+
+  // Form validation and submission
+  const form = document.getElementById('clientForm');
+  form.addEventListener('submit', e => {
     e.preventDefault();
+    if (!form.checkValidity()) {
+      alert('Please fill in all required fields correctly.');
+      return;
+    }
     alert('Thank you for submitting your business info! We will contact you shortly.');
-    this.reset();
+    form.reset();
+  });
+
+  // Accessibility: add keyboard support for template cards
+  const templateCards = document.querySelectorAll('.template-card');
+  templateCards.forEach(card => {
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
   });
 </script>
 
