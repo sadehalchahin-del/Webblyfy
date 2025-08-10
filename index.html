@@ -1,9 +1,95 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Hello World</title>
-  </head>
-  <body>
-    <h1>Hello World</h1>
-  </body>
-</html>
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+
+export default function WebblyfyHome() {
+  return (
+    <div className="min-h-screen bg-white text-black p-6 space-y-12">
+      {/* Header */}
+      <header className="text-center space-y-2">
+        <h1 className="text-5xl font-bold">Webblyfy</h1>
+        <p className="text-xl">
+          Launch your business with stunning websites, marketing tools, and expert Google Ads management
+        </p>
+        <Button className="mt-4">Get Started</Button>
+      </header>
+
+      {/* Why Choose Webblyfy */}
+      <section className="space-y-6">
+        <h2 className="text-3xl font-semibold text-center">Why Choose Webblyfy?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <Card><CardContent className="p-4">✅ Website Templates for Any Business</CardContent></Card>
+          <Card><CardContent className="p-4">✅ AI-Powered Live Chat Support</CardContent></Card>
+          <Card><CardContent className="p-4">✅ Google Ads Management</CardContent></Card>
+          <Card><CardContent className="p-4">✅ SEO & Custom Marketing Strategies</CardContent></Card>
+          <Card><CardContent className="p-4">✅ Fast Setup & Expert Support</CardContent></Card>
+        </div>
+      </section>
+
+      {/* Website Builder Templates */}
+      <section className="space-y-6">
+        <h2 className="text-3xl font-semibold text-center">Website Builder</h2>
+        <p className="text-center max-w-3xl mx-auto">
+          Choose from professionally designed templates, then customize them to fit your brand. No coding needed.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <Card><CardContent className="p-4">🧼 Bar Soap & Beard Product Store</CardContent></Card>
+          <Card><CardContent className="p-4">📋 Service Booking Website</CardContent></Card>
+          <Card><CardContent className="p-4">🍝 Restaurant & Cafe Template</CardContent></Card>
+          <Card><CardContent className="p-4">🧾 Consultant & Freelancer Landing Page</CardContent></Card>
+          <Card><CardContent className="p-4">💄 Beauty & Wellness Brand</CardContent></Card>
+        </div>
+        <div className="text-center">
+          <Button>View All Templates</Button>
+        </div>
+      </section>
+
+      {/* Marketing & Google Ads */}
+      <section className="space-y-6">
+        <h2 className="text-3xl font-semibold text-center">Marketing & Google Ads Management</h2>
+        <p className="max-w-3xl mx-auto text-center">
+          We create custom Google Ads campaigns that drive real results. From setup to reporting, we manage everything.
+        </p>
+        <div className="text-center">
+          <Button>Book Free Marketing Consultation</Button>
+        </div>
+      </section>
+
+      {/* Client Business Info Form */}
+      <section className="space-y-6">
+        <h2 className="text-3xl font-semibold text-center">Client Business Info Form</h2>
+        <p className="text-center max-w-3xl mx-auto">
+          Tell us about your business and we’ll tailor your website and marketing for success.
+        </p>
+        <Card className="max-w-2xl mx-auto">
+          <CardContent className="grid gap-4 p-6">
+            <Input placeholder="Your Name" />
+            <Input type="email" placeholder="Email Address" />
+            <Input placeholder="Business Name" />
+            <Input placeholder="Industry Type" />
+            <Input placeholder="Target Audience" />
+            <Textarea placeholder="What services/products do you offer?" rows={3} />
+            <Textarea placeholder="What are your business goals?" rows={3} />
+            <Button>Submit</Button>
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* AI Live Chat Section */}
+      <section className="space-y-6 text-center">
+        <h2 className="text-3xl font-semibold">Need Help? Chat with Webblyfy AI</h2>
+        <p className="max-w-xl mx-auto">
+          Ask anything about your website, marketing, or business plans. Our AI assistant is always here to help.
+        </p>
+        <Button>Start Live Chat</Button>
+      </section>
+
+      {/* Footer */}
+      <footer className="text-center pt-12 text-sm text-gray-500">
+        &copy; {new Date().getFullYear()} Webblyfy. All rights reserved.
+      </footer>
+    </div>
+  );
+}
