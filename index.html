@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>CN Tower 3D Map Animation</title>
+<title>Architect Blueprint Live Draw</title>
 <style>
   body {
     background: #0a0a0a;
@@ -10,106 +10,98 @@
     font-family: 'Courier New', monospace;
     color: white;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
   }
 
   .terminal {
     background: #111;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
-    font-size: 1.1rem;
-    line-height: 1.4rem;
-    width: 700px;
-    max-width: 95%;
+    width: 40%;
+    box-sizing: border-box;
     overflow: hidden;
+    border-right: 2px solid #00f;
   }
 
   .line {
     white-space: nowrap;
     overflow: hidden;
-    border-right: 3px solid white;
-    animation: typing 3s steps(var(--chars)) forwards,
+    border-right: 3px solid #00f;
+    animation: typing 2s steps(var(--chars)) forwards,
                blink 0.8s infinite;
   }
 
-  /* Syntax colors */
-  .purple { color: #cc66ff; }
-  .blue { color: #33aaff; }
-  .green { color: #00ff88; }
-  .yellow { color: #ffe066; }
-
-  @keyframes blink {
-    0%,50% { border-color: white; }
-    51%,100% { border-color: transparent; }
-  }
+  .line:nth-child(1) { --chars: 30; animation-delay: 0s,0s; }
+  .line:nth-child(2) { --chars: 38; animation-delay: 2.2s,2.2s; }
+  .line:nth-child(3) { --chars: 36; animation-delay: 4.5s,4.5s; }
+  .line:nth-child(4) { --chars: 42; animation-delay: 6.8s,6.8s; }
+  .line:nth-child(5) { --chars: 40; animation-delay: 9.2s,9.2s; }
+  .line:nth-child(6) { --chars: 36; animation-delay: 11.6s,11.6s; }
 
   @keyframes typing {
     from { width: 0ch; }
     to { width: var(--chars)ch; }
   }
 
-  /* Line delays */
-  .line:nth-child(1) { --chars: 33; animation-delay: 0s,0s; }
-  .line:nth-child(2) { --chars: 64; animation-delay: 3.4s,3.4s; }
-  .line:nth-child(3) { --chars: 56; animation-delay: 7.6s,7.6s; }
-  .line:nth-child(4) { --chars: 50; animation-delay: 11.4s,11.4s; }
-  .line:nth-child(5) { --chars: 42; animation-delay: 15s,15s; }
-  .line:nth-child(6) { --chars: 1; animation-delay: 18.2s,18.2s; }
-  .line:nth-child(7) { --chars: 38; animation-delay: 18.8s,18.8s; }
-  .line:nth-child(8) { --chars: 43; animation-delay: 22s,22s; }
-
-  /* 3D Map container */
-  .map-container {
-    margin-top: 30px;
-    width: 700px;
-    max-width: 95%;
-    height: 500px;
-    opacity: 0;
-    transform: scale(0.95);
-    animation: showMap 1.2s ease forwards;
-    animation-delay: 26s;
-    box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
-    border-radius: 8px;
-    overflow: hidden;
+  @keyframes blink {
+    0%,50% { border-color: #00f; }
+    51%,100% { border-color: transparent; }
   }
 
-  iframe {
+  /* Blueprint container */
+  .blueprint {
+    width: 60%;
+    background: #001;
+    position: relative;
+  }
+
+  svg {
     width: 100%;
     height: 100%;
-    border: none;
   }
 
-  @keyframes showMap {
-    to { opacity:1; transform:scale(1); }
+  /* Animations for blueprint lines */
+  .wall { stroke: #00f; stroke-width: 2; stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawWall 1s forwards; }
+  .door { stroke: #0ff; stroke-width: 2; stroke-dasharray: 500; stroke-dashoffset: 500; animation: drawDoor 1s forwards; animation-delay: 4s; }
+  .window { stroke: #0f0; stroke-width: 2; stroke-dasharray: 400; stroke-dashoffset: 400; animation: drawWindow 1s forwards; animation-delay: 6s; }
+
+  @keyframes drawWall {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes drawDoor {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes drawWindow {
+    to { stroke-dashoffset: 0; }
   }
 </style>
 </head>
 <body>
 
 <div class="terminal">
-  <div class="line"><span class="purple">function</span> <span class="blue">load3DMap</span>() {</div>
-  <div class="line">    <span class="green">const</span> map = <span class="blue">new</span> GoogleMap(<span class="yellow">'map-container'</span>);</div>
-  <div class="line">    map.setCenter({ lat: 43.6426, lng: -79.3871 });  <span class="green">// CN Tower</span></div>
-  <div class="line">    map.setZoom(18);  <span class="green">// High zoom for 3D</span></div>
-  <div class="line">    map.setTilt(45);  <span class="green">// Tilt for 3D buildings</span></div>
-  <div class="line">}</div>
-  <div class="line"><span class="blue">load3DMap</span>();</div>
-  <div class="line">// Displaying CN Tower in 3D view</div>
-  <div class="line">// Interactive, rotate & zoom</div>
+  <div class="line">// Start building blueprint</div>
+  <div class="line">createWall(0,0,400,0);</div>
+  <div class="line">createWall(400,0,400,300);</div>
+  <div class="line">createWall(400,300,0,300);</div>
+  <div class="line">createWall(0,300,0,0);</div>
+  <div class="line">createDoor(180,0,60);</div>
+  <div class="line">createWindow(50,150,100);</div>
 </div>
 
-<div class="map-container">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.078182882268!2d-79.38828368450032!3d43.64256697912148!2m3!1f75!2f0!3f0!3m2!1i1024!2i768!4f75!3m3!1m2!1s0x882b34cbcb8f0b3b%3A0x203b8a5c1d3f18b8!2sCN%20Tower!5e0!3m2!1sen!2sca!4v1691962480000!5m2!1sen!2sca"
-    allowfullscreen
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-    title="CN Tower 3D Google Maps"
-  ></iframe>
+<div class="blueprint">
+  <svg>
+    <!-- Walls -->
+    <line x1="0" y1="0" x2="400" y2="0" class="wall" />
+    <line x1="400" y1="0" x2="400" y2="300" class="wall" />
+    <line x1="400" y1="300" x2="0" y2="300" class="wall" />
+    <line x1="0" y1="300" x2="0" y2="0" class="wall" />
+
+    <!-- Door -->
+    <line x1="180" y1="0" x2="240" y2="0" class="door" />
+
+    <!-- Window -->
+    <line x1="50" y1="150" x2="150" y2="150" class="window" />
+  </svg>
 </div>
 
 </body>
