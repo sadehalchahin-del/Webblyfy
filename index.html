@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Architect Blueprint Live Draw</title>
+<title>Building First Floor Blueprint</title>
 <style>
   body {
     background: #0a0a0a;
@@ -14,29 +14,24 @@
     overflow: hidden;
   }
 
+  /* Terminal */
   .terminal {
     background: #111;
     padding: 20px;
-    width: 40%;
+    width: 35%;
     box-sizing: border-box;
     overflow: hidden;
-    border-right: 2px solid #00f;
+    border-right: 2px solid #0ff;
+    font-size: 1.1rem;
   }
 
   .line {
     white-space: nowrap;
     overflow: hidden;
-    border-right: 3px solid #00f;
-    animation: typing 2s steps(var(--chars)) forwards,
-               blink 0.8s infinite;
+    border-right: 3px solid #0ff;
+    animation: typing 1.5s steps(var(--chars)) forwards,
+               blink 0.5s infinite;
   }
-
-  .line:nth-child(1) { --chars: 30; animation-delay: 0s,0s; }
-  .line:nth-child(2) { --chars: 38; animation-delay: 2.2s,2.2s; }
-  .line:nth-child(3) { --chars: 36; animation-delay: 4.5s,4.5s; }
-  .line:nth-child(4) { --chars: 42; animation-delay: 6.8s,6.8s; }
-  .line:nth-child(5) { --chars: 40; animation-delay: 9.2s,9.2s; }
-  .line:nth-child(6) { --chars: 36; animation-delay: 11.6s,11.6s; }
 
   @keyframes typing {
     from { width: 0ch; }
@@ -44,13 +39,13 @@
   }
 
   @keyframes blink {
-    0%,50% { border-color: #00f; }
+    0%,50% { border-color: #0ff; }
     51%,100% { border-color: transparent; }
   }
 
   /* Blueprint container */
   .blueprint {
-    width: 60%;
+    width: 65%;
     background: #001;
     position: relative;
   }
@@ -60,18 +55,18 @@
     height: 100%;
   }
 
-  /* Animations for blueprint lines */
-  .wall { stroke: #00f; stroke-width: 2; stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawWall 1s forwards; }
-  .door { stroke: #0ff; stroke-width: 2; stroke-dasharray: 500; stroke-dashoffset: 500; animation: drawDoor 1s forwards; animation-delay: 4s; }
-  .window { stroke: #0f0; stroke-width: 2; stroke-dasharray: 400; stroke-dashoffset: 400; animation: drawWindow 1s forwards; animation-delay: 6s; }
+  /* Animations for blueprint elements */
+  .wall, .door, .window {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation-fill-mode: forwards;
+  }
 
-  @keyframes drawWall {
-    to { stroke-dashoffset: 0; }
-  }
-  @keyframes drawDoor {
-    to { stroke-dashoffset: 0; }
-  }
-  @keyframes drawWindow {
+  .wall { stroke: #0ff; stroke-width: 3; animation: draw 1s ease forwards; }
+  .door { stroke: #ff0; stroke-width: 3; animation: draw 0.7s ease forwards; animation-delay: 2s; }
+  .window { stroke: #0f0; stroke-width: 3; animation: draw 0.7s ease forwards; animation-delay: 3s; }
+
+  @keyframes draw {
     to { stroke-dashoffset: 0; }
   }
 </style>
@@ -79,30 +74,46 @@
 <body>
 
 <div class="terminal">
-  <div class="line">// Start building blueprint</div>
-  <div class="line">createWall(0,0,400,0);</div>
-  <div class="line">createWall(400,0,400,300);</div>
-  <div class="line">createWall(400,300,0,300);</div>
-  <div class="line">createWall(0,300,0,0);</div>
-  <div class="line">createDoor(180,0,60);</div>
-  <div class="line">createWindow(50,150,100);</div>
+  <div class="line">// Start building first floor blueprint</div>
+  <div class="line">createWall(0,0,800,0);</div>
+  <div class="line">createWall(800,0,800,600);</div>
+  <div class="line">createWall(800,600,0,600);</div>
+  <div class="line">createWall(0,600,0,0);</div>
+  <div class="line">// Rooms</div>
+  <div class="line">createWall(300,0,300,600);</div>
+  <div class="line">createWall(500,0,500,600);</div>
+  <div class="line">createWall(0,300,800,300);</div>
+  <div class="line">// Doors</div>
+  <div class="line">createDoor(150,0,50);</div>
+  <div class="line">createDoor(650,600,50);</div>
+  <div class="line">// Windows</div>
+  <div class="line">createWindow(100,300,60);</div>
+  <div class="line">createWindow(700,300,60);</div>
 </div>
 
 <div class="blueprint">
-  <svg>
-    <!-- Walls -->
-    <line x1="0" y1="0" x2="400" y2="0" class="wall" />
-    <line x1="400" y1="0" x2="400" y2="300" class="wall" />
-    <line x1="400" y1="300" x2="0" y2="300" class="wall" />
-    <line x1="0" y1="300" x2="0" y2="0" class="wall" />
+  <svg viewBox="0 0 800 600">
+    <!-- Outer walls -->
+    <line x1="0" y1="0" x2="800" y2="0" class="wall" style="animation-delay:0s"/>
+    <line x1="800" y1="0" x2="800" y2="600" class="wall" style="animation-delay:0.5s"/>
+    <line x1="800" y1="600" x2="0" y2="600" class="wall" style="animation-delay:1s"/>
+    <line x1="0" y1="600" x2="0" y2="0" class="wall" style="animation-delay:1.5s"/>
 
-    <!-- Door -->
-    <line x1="180" y1="0" x2="240" y2="0" class="door" />
+    <!-- Inner walls / rooms -->
+    <line x1="300" y1="0" x2="300" y2="600" class="wall" style="animation-delay:2s"/>
+    <line x1="500" y1="0" x2="500" y2="600" class="wall" style="animation-delay:2.5s"/>
+    <line x1="0" y1="300" x2="800" y2="300" class="wall" style="animation-delay:3s"/>
 
-    <!-- Window -->
-    <line x1="50" y1="150" x2="150" y2="150" class="window" />
+    <!-- Doors -->
+    <line x1="150" y1="0" x2="200" y2="0" class="door"/>
+    <line x1="650" y1="600" x2="700" y2="600" class="door"/>
+
+    <!-- Windows -->
+    <line x1="100" y1="300" x2="160" y2="300" class="window"/>
+    <line x1="700" y1="300" x2="760" y2="300" class="window"/>
   </svg>
 </div>
 
 </body>
 </html>
+
