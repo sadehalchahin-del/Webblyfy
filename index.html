@@ -2,135 +2,115 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Detailed Dog Face Blueprint</title>
+<title>Car Function Coding Animation</title>
 <style>
   body {
-    background: #000;
+    background: #0a0a0a;
     margin: 0;
-    font-family: 'Courier New', monospace;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', monospace;
+    gap: 20px;
     height: 100vh;
-    overflow: hidden;
-    color: white;
   }
 
-  /* Terminal panel */
   .terminal {
-    width: 35%;
     background: #111;
     padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,255,0,0.4);
+    color: white;
+    font-size: 1.1rem;
+    line-height: 1.4rem;
+    width: 750px;
+    max-width: 95%;
     overflow: hidden;
-    border-right: 2px solid #0ff;
-    box-sizing: border-box;
-    font-size: 1rem;
   }
 
   .line {
     white-space: nowrap;
     overflow: hidden;
-    border-right: 3px solid #0ff;
-    animation: typing 1.2s steps(var(--chars)) forwards,
-               blink 0.5s infinite;
+    border-right: 3px solid white;
+    animation: typing 3s steps(var(--chars)) forwards,
+               blink 0.8s infinite;
   }
 
+  /* Syntax colors */
+  .purple { color: #cc66ff; }
+  .blue { color: #33aaff; }
+  .green { color: #00ff88; }
+  .yellow { color: #ffe066; }
+
+  /* Cursor blink */
+  @keyframes blink {
+    0%, 50% { border-color: white; }
+    51%, 100% { border-color: transparent; }
+  }
+
+  /* Typing effect */
   @keyframes typing {
     from { width: 0ch; }
     to { width: var(--chars)ch; }
   }
 
-  @keyframes blink {
-    0%,50% { border-color: #0ff; }
-    51%,100% { border-color: transparent; }
+  /* Delays for each line */
+  .line:nth-child(1) { --chars: 33; animation-delay: 0s, 0s; }
+  .line:nth-child(2) { --chars: 58; animation-delay: 3.2s, 3.2s; }
+  .line:nth-child(3) { --chars: 48; animation-delay: 6.8s, 6.8s; }
+  .line:nth-child(4) { --chars: 53; animation-delay: 10s, 10s; }
+  .line:nth-child(5) { --chars: 43; animation-delay: 13.4s, 13.4s; }
+  .line:nth-child(6) { --chars: 1;  animation-delay: 16.4s, 16.4s; }
+  .line:nth-child(7) { --chars: 28; animation-delay: 17s, 17s; }
+  .line:nth-child(8) { --chars: 29; animation-delay: 19.4s, 19.4s; }
+  .line:nth-child(9) { --chars: 39; animation-delay: 21.8s, 21.8s; }
+  .line:nth-child(10) { --chars: 26; animation-delay: 24.8s, 24.8s; }
+
+  /* Image container after code */
+  .images {
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    transform: scale(0.95);
+    animation: showImages 1s ease forwards;
+    animation-delay: 28s;
   }
 
-  /* Blueprint panel */
-  .blueprint {
-    width: 65%;
-    background: #000;
-    position: relative;
+  .images img {
+    max-width: 220px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
   }
 
-  svg {
-    width: 100%;
-    height: 100%;
+  @keyframes showImages {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
-
-  /* SVG line animation */
-  path, circle, polyline {
-    stroke: #fff;
-    stroke-width: 2;
-    fill: none;
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation-fill-mode: forwards;
-  }
-
-  /* Sequential animation classes */
-  .part1 { animation: draw 1s linear forwards; animation-delay: 0s; }
-  .part2 { animation: draw 1s linear forwards; animation-delay: 0.7s; }
-  .part3 { animation: draw 1s linear forwards; animation-delay: 1.4s; }
-  .part4 { animation: draw 1s linear forwards; animation-delay: 2.1s; }
-  .part5 { animation: draw 1s linear forwards; animation-delay: 2.8s; }
-  .part6 { animation: draw 1s linear forwards; animation-delay: 3.5s; }
-  .part7 { animation: draw 1s linear forwards; animation-delay: 4.2s; }
-  .part8 { animation: draw 1s linear forwards; animation-delay: 4.9s; }
-  .part9 { animation: draw 1s linear forwards; animation-delay: 5.6s; }
-  .part10 { animation: draw 1s linear forwards; animation-delay: 6.3s; }
-
-  @keyframes draw {
-    to { stroke-dashoffset: 0; }
-  }
-
 </style>
 </head>
 <body>
 
 <div class="terminal">
-  <div class="line">// Start drawing dog face blueprint</div>
-  <div class="line">createHeadCircle(100,100,80);</div>
-  <div class="line">drawLeftEar();</div>
-  <div class="line">drawRightEar();</div>
-  <div class="line">drawEyes();</div>
-  <div class="line">drawNose();</div>
-  <div class="line">drawMouth();</div>
-  <div class="line">drawTongue();</div>
-  <div class="line">drawFurDetails();</div>
-  <div class="line">drawWhiskers();</div>
-  <div class="line">// Dog face complete!</div>
+  <div class="line"><span class="purple">function</span> <span class="blue">startCar</span>() {</div>
+  <div class="line">    <span class="green">engine</span>.ignite(<span class="yellow">"V8"</span>);</div>
+  <div class="line">    <span class="green">dashboard</span>.display(<span class="yellow">"System Check OK"</span>);</div>
+  <div class="line">    <span class="green">navigation</span>.setDestination(<span class="yellow">"Downtown"</span>);</div>
+  <div class="line">    <span class="green">driveSystem</span>.enableAutopilot(<span class="yellow">true</span>);</div>
+  <div class="line">}</div>
+  <div class="line"><span class="blue">startCar</span>();</div>
+  <div class="line"><span class="green">accelerate</span>(<span class="yellow">60</span>);</div>
+  <div class="line"><span class="green">turn</span>(<span class="yellow">"left"</span>, <span class="yellow">"Main St."</span>);</div>
+  <div class="line"><span class="green">brake</span>(<span class="yellow">"smooth"</span>);</div>
 </div>
 
-<div class="blueprint">
-  <svg viewBox="0 0 200 200">
-    <!-- Head -->
-    <circle cx="100" cy="100" r="80" class="part1"/>
-
-    <!-- Left Ear -->
-    <polyline points="40,40 70,20 80,60" class="part2"/>
-
-    <!-- Right Ear -->
-    <polyline points="160,40 130,20 120,60" class="part3"/>
-
-    <!-- Eyes -->
-    <circle cx="75" cy="90" r="6" class="part4"/>
-    <circle cx="125" cy="90" r="6" class="part5"/>
-
-    <!-- Nose -->
-    <circle cx="100" cy="120" r="7" class="part6"/>
-
-    <!-- Mouth -->
-    <path d="M85,135 Q100,150 115,135" class="part7"/>
-
-    <!-- Tongue -->
-    <path d="M95,145 Q100,160 105,145" class="part8"/>
-
-    <!-- Fur details -->
-    <polyline points="40,100 30,110 40,120" class="part9"/>
-    <polyline points="160,100 170,110 160,120" class="part9"/>
-
-    <!-- Whiskers -->
-    <line x1="60" y1="125" x2="90" y2="125" class="part10"/>
-    <line x1="110" y1="125" x2="140" y2="125" class="part10"/>
-  </svg>
+<!-- Car-related images shown after animation -->
+<div class="images">
+  <img src="https://via.placeholder.com/220x140?text=Car+Dashboard" alt="Car Dashboard">
+  <img src="https://via.placeholder.com/220x140?text=Navigation+Screen" alt="Navigation Screen">
+  <img src="https://via.placeholder.com/220x140?text=Car+On+Road" alt="Car Driving">
 </div>
 
 </body>
