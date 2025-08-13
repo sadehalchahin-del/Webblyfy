@@ -1,377 +1,121 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Webblyfy | Website & Marketing Solutions</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-    /* Reset */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #f0f0f5;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      padding: 2rem 1rem;
-      scroll-behavior: smooth;
-    }
-    a {
-      color: #fff;
-      text-decoration: none;
-    }
-    header {
-      max-width: 900px;
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    header h1 {
-      font-size: 3.8rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-    }
-    header p {
-      font-size: 1.4rem;
-      color: #d1d1e9;
-      margin-bottom: 1.8rem;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.15);
-    }
-    .btn-primary {
-      background: #ff5f6d;
-      background: linear-gradient(45deg, #ff5f6d, #ffc371);
-      border: none;
-      padding: 0.85rem 2.5rem;
-      border-radius: 50px;
-      color: #fff;
-      font-weight: 600;
-      font-size: 1.2rem;
-      cursor: pointer;
-      box-shadow: 0 6px 15px rgba(255,95,109,0.5);
-      transition: all 0.3s ease;
-      user-select: none;
-    }
-    .btn-primary:hover,
-    .btn-primary:focus {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(255,95,109,0.8);
-      outline: none;
-    }
+<meta charset="UTF-8" />
+<title>Mapping Code Animation with Real Map</title>
+<style>
+  body {
+    background: #0a0a0a;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+  }
 
-    main {
-      max-width: 1000px;
-      width: 100%;
-      background: rgba(255 255 255 / 0.1);
-      border-radius: 18px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-      padding: 3rem 2rem;
-      backdrop-filter: blur(15px);
-      color: #fff;
-    }
+  .terminal {
+    background: #111;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+    font-size: 1.1rem;
+    line-height: 1.4rem;
+    width: 700px;
+    max-width: 95%;
+    overflow: hidden;
+  }
 
-    section {
-      margin-bottom: 3.5rem;
-    }
-    section h2 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 2rem;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
+  .line {
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid white;
+    animation: typing 3s steps(var(--chars)) forwards,
+               blink 0.8s infinite;
+  }
 
-    /* Features grid */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 1.8rem;
-      text-align: center;
-    }
-    .feature-box {
-      background: rgba(255 255 255 / 0.15);
-      padding: 1.8rem 1.5rem;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      transition: background 0.4s ease;
-      cursor: default;
-    }
-    .feature-box:hover {
-      background: rgba(255 255 255 / 0.25);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-    }
-    .feature-box::before {
-      content: '✔️';
-      display: block;
-      font-size: 2rem;
-      margin-bottom: 0.6rem;
-    }
-    .feature-box p {
-      font-size: 1.15rem;
-      line-height: 1.5;
-      font-weight: 600;
-    }
+  /* Syntax colors */
+  .purple { color: #cc66ff; }
+  .blue { color: #33aaff; }
+  .green { color: #00ff88; }
+  .yellow { color: #ffe066; }
 
-    /* Templates cards */
-    .templates-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-      gap: 1.5rem;
-    }
-    .template-card {
-      background: rgba(255 255 255 / 0.1);
-      border-radius: 15px;
-      padding: 1.5rem 1.2rem;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.25);
-      font-weight: 600;
-      font-size: 1.2rem;
-      color: #ffddd2;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
-      cursor: pointer;
-      border: 2px solid transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .template-card:hover {
-      background: #ff6e6e;
-      box-shadow: 0 14px 35px rgba(255,110,110,0.7);
-      transform: scale(1.07);
-      border-color: #ffcbc4;
-      color: #fff;
-    }
+  /* Cursor blink */
+  @keyframes blink {
+    0%, 50% { border-color: white; }
+    51%, 100% { border-color: transparent; }
+  }
 
-    /* Centered button under templates */
-    .templates-btn-wrapper {
-      text-align: center;
-      margin-top: 2rem;
-    }
+  /* Typing effect */
+  @keyframes typing {
+    from { width: 0ch; }
+    to { width: var(--chars)ch; }
+  }
 
-    /* Marketing section */
-    .marketing-text {
-      max-width: 700px;
-      margin: auto;
-      font-size: 1.2rem;
-      font-weight: 500;
-      line-height: 1.7;
-      text-align: center;
-      margin-bottom: 1.8rem;
-    }
+  /* Sequential delays for lines */
+  .line:nth-child(1) { --chars: 33; animation-delay: 0s, 0s; }
+  .line:nth-child(2) { --chars: 57; animation-delay: 3.4s, 3.4s; }
+  .line:nth-child(3) { --chars: 56; animation-delay: 7.2s, 7.2s; }
+  .line:nth-child(4) { --chars: 48; animation-delay: 10.8s, 10.8s; }
+  .line:nth-child(5) { --chars: 42; animation-delay: 14.4s, 14.4s; }
+  .line:nth-child(6) { --chars: 1;  animation-delay: 17.6s, 17.6s; }
+  .line:nth-child(7) { --chars: 31; animation-delay: 18.2s, 18.2s; }
+  .line:nth-child(8) { --chars: 43; animation-delay: 21.4s, 21.4s; }
 
-    /* Form styles */
-    form {
-      max-width: 650px;
-      margin: auto;
-      display: grid;
-      gap: 1.4rem;
-      background: rgba(255 255 255 / 0.15);
-      padding: 2rem;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-      color: #fff;
-    }
-    input[type="text"],
-    input[type="email"],
-    textarea {
-      background: rgba(255 255 255 / 0.25);
-      border: none;
-      border-radius: 10px;
-      padding: 0.9rem 1.2rem;
-      font-size: 1.05rem;
-      color: #fff;
-      font-weight: 600;
-      font-family: 'Poppins', sans-serif;
-      resize: vertical;
-      transition: background 0.3s ease;
-    }
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    textarea:focus {
-      background: rgba(255 255 255 / 0.45);
-      outline: none;
-      box-shadow: 0 0 8px 3px rgba(255,95,109,0.6);
-      color: #222;
-    }
-    textarea {
-      min-height: 90px;
-    }
-    form button {
-      justify-self: center;
-      max-width: 240px;
-    }
+  /* Map container */
+  .map-container {
+    margin-top: 30px;
+    width: 700px;
+    max-width: 95%;
+    height: 400px;
+    opacity: 0;
+    transform: scale(0.95);
+    animation: showMap 1.2s ease forwards;
+    animation-delay: 25.5s; /* delay to start after code finishes */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+    border-radius: 8px;
+    overflow: hidden;
+  }
 
-    /* Live Chat Section */
-    .livechat-section {
-      text-align: center;
-      max-width: 700px;
-      margin: auto;
-      margin-top: 3rem;
-      margin-bottom: 2rem;
-      font-weight: 600;
-    }
-    .livechat-section p {
-      font-weight: 400;
-      font-size: 1.15rem;
-      margin-bottom: 1rem;
-    }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #ccc;
-      margin-top: auto;
-      padding: 1.5rem;
-      user-select: none;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+  @keyframes showMap {
+    to {
+      opacity: 1;
+      transform: scale(1);
     }
-
-    /* Responsive adjustments */
-    @media (max-width: 650px) {
-      header h1 {
-        font-size: 2.6rem;
-      }
-      section h2 {
-        font-size: 2rem;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-<header>
-  <h1>Webblyfy</h1>
-  <p>Launch your business with stunning websites, marketing tools, and expert Google Ads management</p>
-  <button class="btn-primary" id="btnGetStarted">Get Started</button>
-</header>
+<div class="terminal">
+  <div class="line"><span class="purple">function</span> <span class="blue">loadMap</span>() {</div>
+  <div class="line">    <span class="green">const</span> map = <span class="blue">new</span> Map(<span class="yellow">'map-container'</span>);</div>
+  <div class="line">    map.setCenter({ lat: 43.65107, lng: -79.347015 });</div>
+  <div class="line">    map.setZoom(12);</div>
+  <div class="line">    map.addMarker({ lat: 43.6532, lng: -79.3832 });</div>
+  <div class="line">}</div>
+  <div class="line"><span class="blue">loadMap</span>();</div>
+  <div class="line">// Displaying map of Toronto</div>
+  <div class="line">// Interactive and dynamic</div>
+</div>
 
-<main>
-  <section>
-    <h2>Why Choose Webblyfy?</h2>
-    <div class="features-grid" aria-label="Features">
-      <div class="feature-box" tabindex="0" role="article" aria-label="Website Templates for Any Business">
-        <p>Website Templates for Any Business</p>
-      </div>
-      <div class="feature-box" tabindex="0" role="article" aria-label="AI-Powered Live Chat Support">
-        <p>AI-Powered Live Chat Support</p>
-      </div>
-      <div class="feature-box" tabindex="0" role="article" aria-label="Google Ads Management">
-        <p>Google Ads Management</p>
-      </div>
-      <div class="feature-box" tabindex="0" role="article" aria-label="SEO & Custom Marketing Strategies">
-        <p>SEO & Custom Marketing Strategies</p>
-      </div>
-      <div class="feature-box" tabindex="0" role="article" aria-label="Fast Setup & Expert Support">
-        <p>Fast Setup & Expert Support</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Website Builder Templates</h2>
-    <p style="text-align:center; max-width:720px; margin:auto; margin-bottom:1.8rem;">
-      Choose from professionally designed templates, then customize them to fit your brand. No coding needed.
-    </p>
-    <div class="templates-grid" aria-label="Website templates">
-      <div class="template-card" tabindex="0" role="button" aria-pressed="false" onclick="alert('Selected Bar Soap & Beard Product Store Template')">
-        🧼 Bar Soap & Beard Product Store
-      </div>
-      <div class="template-card" tabindex="0" role="button" aria-pressed="false" onclick="alert('Selected Service Booking Website Template')">
-        📋 Service Booking Website
-      </div>
-      <div class="template-card" tabindex="0" role="button" aria-pressed="false" onclick="alert('Selected Restaurant & Cafe Template')">
-        🍝 Restaurant & Cafe Template
-      </div>
-      <div class="template-card" tabindex="0" role="button" aria-pressed="false" onclick="alert('Selected Consultant & Freelancer Landing Page Template')">
-        🧾 Consultant & Freelancer Landing Page
-      </div>
-      <div class="template-card" tabindex="0" role="button" aria-pressed="false" onclick="alert('Selected Beauty & Wellness Brand Template')">
-        💄 Beauty & Wellness Brand
-      </div>
-    </div>
-    <div class="templates-btn-wrapper">
-      <button class="btn-primary" id="btnViewAllTemplates">View All Templates</button>
-    </div>
-  </section>
-
-  <section>
-    <h2>Marketing & Google Ads Management</h2>
-    <p class="marketing-text">
-      We create custom Google Ads campaigns that drive real results. From setup to reporting, we manage everything.
-    </p>
-    <div style="text-align:center;">
-      <button class="btn-primary" id="btnConsultation">Book Free Marketing Consultation</button>
-    </div>
-  </section>
-
-  <section>
-    <h2>Client Business Info Form</h2>
-    <p style="text-align:center; max-width:700px; margin:auto; margin-bottom:1.2rem;">
-      Tell us about your business and we’ll tailor your website and marketing for success.
-    </p>
-    <form id="clientForm" novalidate>
-      <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
-      <input type="email" name="email" placeholder="Email Address" required aria-required="true" />
-      <input type="text" name="business" placeholder="Business Name" required aria-required="true" />
-      <input type="text" name="industry" placeholder="Industry Type" required aria-required="true" />
-      <input type="text" name="audience" placeholder="Target Audience" required aria-required="true" />
-      <textarea name="services" placeholder="What services/products do you offer?" required aria-required="true"></textarea>
-      <textarea name="goals" placeholder="What are your business goals?" required aria-required="true"></textarea>
-      <button type="submit" class="btn-primary">Submit</button>
-    </form>
-  </section>
-
-  <section class="livechat-section">
-    <h2>Need Help? Chat with Webblyfy AI</h2>
-    <p>Ask anything about your website, marketing, or business plans. Our AI assistant is always here to help.</p>
-    <button class="btn-primary" id="btnLiveChat">Start Live Chat</button>
-  </section>
-</main>
-
-<footer>
-  &copy; <span id="year"></span> Webblyfy. All rights reserved.
-</footer>
-
-<script>
-  // Set year in footer
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Button event handlers
-  document.getElementById('btnGetStarted').onclick = () => alert('Thanks for getting started! We will reach out shortly.');
-  document.getElementById('btnViewAllTemplates').onclick = () => alert('Redirecting to full template gallery...');
-  document.getElementById('btnConsultation').onclick = () => alert('Booking your free marketing consultation now.');
-  document.getElementById('btnLiveChat').onclick = () => alert('Launching live AI chat...');
-
-  // Form validation and submission
-  const form = document.getElementById('clientForm');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    if (!form.checkValidity()) {
-      alert('Please fill in all required fields correctly.');
-      return;
-    }
-    alert('Thank you for submitting your business info! We will contact you shortly.');
-    form.reset();
-  });
-
-  // Accessibility: add keyboard support for template cards
-  const templateCards = document.querySelectorAll('.template-card');
-  templateCards.forEach(card => {
-    card.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        card.click();
-      }
-    });
-  });
-</script>
+<div class="map-container">
+  <iframe
+    src="https://www.openstreetmap.org/export/embed.html?bbox=-79.39%2C43.63%2C-79.33%2C43.67&amp;layer=mapnik&amp;marker=43.65%2C-79.36"
+    allowfullscreen
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    title="OpenStreetMap Toronto"
+  ></iframe>
+</div>
 
 </body>
 </html>
