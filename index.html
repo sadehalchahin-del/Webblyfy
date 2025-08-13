@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Mapping Code Animation with Real Map</title>
+<title>CN Tower Map Animation</title>
 <style>
   body {
     background: #0a0a0a;
@@ -56,13 +56,13 @@
 
   /* Sequential delays for lines */
   .line:nth-child(1) { --chars: 33; animation-delay: 0s, 0s; }
-  .line:nth-child(2) { --chars: 57; animation-delay: 3.4s, 3.4s; }
-  .line:nth-child(3) { --chars: 56; animation-delay: 7.2s, 7.2s; }
-  .line:nth-child(4) { --chars: 48; animation-delay: 10.8s, 10.8s; }
-  .line:nth-child(5) { --chars: 42; animation-delay: 14.4s, 14.4s; }
-  .line:nth-child(6) { --chars: 1;  animation-delay: 17.6s, 17.6s; }
-  .line:nth-child(7) { --chars: 31; animation-delay: 18.2s, 18.2s; }
-  .line:nth-child(8) { --chars: 43; animation-delay: 21.4s, 21.4s; }
+  .line:nth-child(2) { --chars: 61; animation-delay: 3.4s, 3.4s; }
+  .line:nth-child(3) { --chars: 56; animation-delay: 7.5s, 7.5s; }
+  .line:nth-child(4) { --chars: 48; animation-delay: 11.3s, 11.3s; }
+  .line:nth-child(5) { --chars: 42; animation-delay: 14.9s, 14.9s; }
+  .line:nth-child(6) { --chars: 1;  animation-delay: 18.1s, 18.1s; }
+  .line:nth-child(7) { --chars: 36; animation-delay: 18.7s, 18.7s; }
+  .line:nth-child(8) { --chars: 43; animation-delay: 21.9s, 21.9s; }
 
   /* Map container */
   .map-container {
@@ -73,7 +73,7 @@
     opacity: 0;
     transform: scale(0.95);
     animation: showMap 1.2s ease forwards;
-    animation-delay: 25.5s; /* delay to start after code finishes */
+    animation-delay: 26s;
     box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
     border-radius: 8px;
     overflow: hidden;
@@ -98,24 +98,25 @@
 <div class="terminal">
   <div class="line"><span class="purple">function</span> <span class="blue">loadMap</span>() {</div>
   <div class="line">    <span class="green">const</span> map = <span class="blue">new</span> Map(<span class="yellow">'map-container'</span>);</div>
-  <div class="line">    map.setCenter({ lat: 43.65107, lng: -79.347015 });</div>
-  <div class="line">    map.setZoom(12);</div>
-  <div class="line">    map.addMarker({ lat: 43.6532, lng: -79.3832 });</div>
+  <div class="line">    map.setCenter({ lat: 43.6426, lng: -79.3871 });  <span class="green">// CN Tower coordinates</span></div>
+  <div class="line">    map.setZoom(15);</div>
+  <div class="line">    map.addMarker({ lat: 43.6426, lng: -79.3871 });</div>
   <div class="line">}</div>
   <div class="line"><span class="blue">loadMap</span>();</div>
-  <div class="line">// Displaying map of Toronto</div>
-  <div class="line">// Interactive and dynamic</div>
+  <div class="line">// Showing map centered on CN Tower</div>
+  <div class="line">// Interactive, zoomable</div>
 </div>
 
 <div class="map-container">
   <iframe
-    src="https://www.openstreetmap.org/export/embed.html?bbox=-79.39%2C43.63%2C-79.33%2C43.67&amp;layer=mapnik&amp;marker=43.65%2C-79.36"
+    src="https://www.openstreetmap.org/export/embed.html?bbox=-79.395%2C43.639%2C-79.38%2C43.646&amp;layer=mapnik&amp;marker=43.6426%2C-79.3871"
     allowfullscreen
     loading="lazy"
     referrerpolicy="no-referrer-when-downgrade"
-    title="OpenStreetMap Toronto"
+    title="OpenStreetMap CN Tower Toronto"
   ></iframe>
 </div>
 
 </body>
 </html>
+
