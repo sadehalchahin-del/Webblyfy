@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>CN Tower Map Animation</title>
+<meta charset="UTF-8">
+<title>CN Tower 3D Map Animation</title>
 <style>
   body {
     background: #0a0a0a;
@@ -42,34 +42,32 @@
   .green { color: #00ff88; }
   .yellow { color: #ffe066; }
 
-  /* Cursor blink */
   @keyframes blink {
-    0%, 50% { border-color: white; }
-    51%, 100% { border-color: transparent; }
+    0%,50% { border-color: white; }
+    51%,100% { border-color: transparent; }
   }
 
-  /* Typing effect */
   @keyframes typing {
     from { width: 0ch; }
     to { width: var(--chars)ch; }
   }
 
-  /* Sequential delays for lines */
-  .line:nth-child(1) { --chars: 33; animation-delay: 0s, 0s; }
-  .line:nth-child(2) { --chars: 61; animation-delay: 3.4s, 3.4s; }
-  .line:nth-child(3) { --chars: 56; animation-delay: 7.5s, 7.5s; }
-  .line:nth-child(4) { --chars: 48; animation-delay: 11.3s, 11.3s; }
-  .line:nth-child(5) { --chars: 42; animation-delay: 14.9s, 14.9s; }
-  .line:nth-child(6) { --chars: 1;  animation-delay: 18.1s, 18.1s; }
-  .line:nth-child(7) { --chars: 36; animation-delay: 18.7s, 18.7s; }
-  .line:nth-child(8) { --chars: 43; animation-delay: 21.9s, 21.9s; }
+  /* Line delays */
+  .line:nth-child(1) { --chars: 33; animation-delay: 0s,0s; }
+  .line:nth-child(2) { --chars: 64; animation-delay: 3.4s,3.4s; }
+  .line:nth-child(3) { --chars: 56; animation-delay: 7.6s,7.6s; }
+  .line:nth-child(4) { --chars: 50; animation-delay: 11.4s,11.4s; }
+  .line:nth-child(5) { --chars: 42; animation-delay: 15s,15s; }
+  .line:nth-child(6) { --chars: 1; animation-delay: 18.2s,18.2s; }
+  .line:nth-child(7) { --chars: 38; animation-delay: 18.8s,18.8s; }
+  .line:nth-child(8) { --chars: 43; animation-delay: 22s,22s; }
 
-  /* Map container */
+  /* 3D Map container */
   .map-container {
     margin-top: 30px;
     width: 700px;
     max-width: 95%;
-    height: 400px;
+    height: 500px;
     opacity: 0;
     transform: scale(0.95);
     animation: showMap 1.2s ease forwards;
@@ -86,38 +84,33 @@
   }
 
   @keyframes showMap {
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    to { opacity:1; transform:scale(1); }
   }
 </style>
 </head>
 <body>
 
 <div class="terminal">
-  <div class="line"><span class="purple">function</span> <span class="blue">loadMap</span>() {</div>
-  <div class="line">    <span class="green">const</span> map = <span class="blue">new</span> Map(<span class="yellow">'map-container'</span>);</div>
-  <div class="line">    map.setCenter({ lat: 43.6426, lng: -79.3871 });  <span class="green">// CN Tower coordinates</span></div>
-  <div class="line">    map.setZoom(15);</div>
-  <div class="line">    map.addMarker({ lat: 43.6426, lng: -79.3871 });</div>
+  <div class="line"><span class="purple">function</span> <span class="blue">load3DMap</span>() {</div>
+  <div class="line">    <span class="green">const</span> map = <span class="blue">new</span> GoogleMap(<span class="yellow">'map-container'</span>);</div>
+  <div class="line">    map.setCenter({ lat: 43.6426, lng: -79.3871 });  <span class="green">// CN Tower</span></div>
+  <div class="line">    map.setZoom(18);  <span class="green">// High zoom for 3D</span></div>
+  <div class="line">    map.setTilt(45);  <span class="green">// Tilt for 3D buildings</span></div>
   <div class="line">}</div>
-  <div class="line"><span class="blue">loadMap</span>();</div>
-  <div class="line">// Showing map centered on CN Tower</div>
-  <div class="line">// Interactive, zoomable</div>
+  <div class="line"><span class="blue">load3DMap</span>();</div>
+  <div class="line">// Displaying CN Tower in 3D view</div>
+  <div class="line">// Interactive, rotate & zoom</div>
 </div>
 
 <div class="map-container">
   <iframe
-    src="https://www.openstreetmap.org/export/embed.html?bbox=-79.395%2C43.639%2C-79.38%2C43.646&amp;layer=mapnik&amp;marker=43.6426%2C-79.3871"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.078182882268!2d-79.38828368450032!3d43.64256697912148!2m3!1f75!2f0!3f0!3m2!1i1024!2i768!4f75!3m3!1m2!1s0x882b34cbcb8f0b3b%3A0x203b8a5c1d3f18b8!2sCN%20Tower!5e0!3m2!1sen!2sca!4v1691962480000!5m2!1sen!2sca"
     allowfullscreen
     loading="lazy"
     referrerpolicy="no-referrer-when-downgrade"
-    title="OpenStreetMap CN Tower Toronto"
+    title="CN Tower 3D Google Maps"
   ></iframe>
 </div>
 
 </body>
 </html>
-
-
